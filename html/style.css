@@ -1,0 +1,111 @@
+@font-face {
+    font-family: track;
+    src: url(font/Track.ttf);
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,legend,button
+form,fieldset,input,textarea,p,blockquote,th,td {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+body{
+  background-color: #F1F1F1;
+  font-family: track;
+}
+
+.header{
+  margin:50px 0;
+  color: #7867BF;
+  text-align: center;
+  font-weight: bold;
+}
+
+.charts{
+  padding: 30px 0px;
+}
+
+.card{
+  border-radius: 10px;
+  display: inline-block;
+  background: #ffffff;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+}
+
+.card table {
+    counter-reset: rowNumber;
+}
+
+.card table tr:not(:first-child){
+    counter-increment: rowNumber;
+}
+
+.card table{
+  width: 100%;
+  text-align: center;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.card table td:first-child::before {
+    content: counter(rowNumber);
+}
+
+.card th {
+  color: white;
+  margin: 0;
+  padding: 13px 8px;
+}
+.card:nth-child(1) table tr:first-child {
+  background: #7397DE;
+}
+.card:nth-child(2) table tr:first-child {
+    background: #8ACDBC;
+}
+
+.card td{
+  margin: 0;
+  padding: 8px;
+}
+
+.card tr:nth-child(even){background-color: #f2f2f2;}
+
+.card tr:not(:first-child):hover {background-color: #ddd;}
+
+
+.x30{
+  width: 30%;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+
+#intro{
+  left: 2.5%;
+  width: 95%;
+  position: absolute;
+  padding: 20px;
+}
+
+
+
+
+footer{
+  left:0;
+  bottom: 0;
+  height: 130px;
+  width: 100%;
+  display: table;
+  position: absolute;
+  color:white;
+  background-color: #33333A;
+  vertical-align: bottom;
+}
+footer > * {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}

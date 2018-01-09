@@ -126,4 +126,12 @@ def get_newone():
     
     return(newone)
 
+def get_ticker(symbol, take = 'percentChange'):
+    url = 'https://poloniex.com/public?command=returnTicker'
+    res = rq.get(url)
+    ticker = res.json()
+    information = float(ticker['BTC_' + symbol][take])
+    
+    return(information)
+
 

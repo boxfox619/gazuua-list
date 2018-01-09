@@ -1,3 +1,10 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,legend,button
+form,fieldset,input,textarea,p,blockquote,th,td {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
 @font-face {
     font-family: track;
     src: url(font/Track.ttf);
@@ -6,13 +13,6 @@
 @font-face {
     font-family: noto-mono;
     src: url(font/NotoMono-Regular.ttf);
-}
-
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,legend,button
-form,fieldset,input,textarea,p,blockquote,th,td {
-  padding: 0;
-  margin: 0;
-  border: none;
 }
 
 body{
@@ -27,10 +27,11 @@ body{
 }
 
 section.main{
-  position: absolute;
+  position: relative;
   left: 2.5%;
   width: 95%;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
+  min-height: calc( 100vh - 323px);
 }
 
 .charts{
@@ -101,7 +102,6 @@ section.main{
   width: 98.5%;
   margin-left: 0.5%;
   margin-top: 30px;
-  position: relative;
 }
 
 #intro .content{
@@ -112,17 +112,96 @@ section.main{
 footer{
   left:0;
   bottom: 0;
-  height: 80px;
   width: 100%;
-  display: table;
-  position: fixed;
-  color:white;
+  position: relative;
+  color: white;
   background-color: #33333A;
   vertical-align: bottom;
 }
 
-footer > * {
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+footer .container {
+  margin: 0 auto;
+  padding: 22px 16px;
+  max-width: 1248px;
+  width: 100%;
+}
+
+footer .container .row{
+  -webkit-flex: 1 auto;
+  flex: 1 auto;
+  -webkit-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+}
+
+footer .container .row > * {
+  -webkit-flex: 1 auto;
+  flex: 1 auto;
+  -webkit-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+footer .container .row > *.end{
+  position: absolute;
+  right:0;
+  top: -2px;
+}
+
+footer .company-info{
+  text-align: center;
+}
+
+footer .company-info img{
+  width: 40px;
+}
+
+footer ul.list{
+  margin-left: 5px;
+  list-style: none;
+  font-size: 12px;
+}
+
+footer a{
+  text-decoration: none;
+  color: white;
+}
+
+@media screen and (max-width: 1310px) {
+  footer .container .row{
+      -webkit-flex: 1 auto;
+      flex: 1 auto;
+      -webkit-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+      display: -webkit-flex;
+      display: block;
+      position: relative;
+  }
+
+  footer .container .row > * {
+    margin: 10px auto;
+    max-width: 380px;
+  }
+
+  footer .container .row > *.end{
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .charts{
+    display: block;
+  }
+  .charts > *{
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  #intro{
+    width: 100%;
+    margin-left: 0%;
+    margin-top: 0;
+  }
+
 }

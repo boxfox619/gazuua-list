@@ -17,7 +17,7 @@ def get_json(coin_cd, start, end):
                                 'start': start,
                                 'end': end,
                                 'period': 1800})
-    
+
     return(res)
 
 def get_history(res, coin_cd):
@@ -105,13 +105,13 @@ def get_newone():
             'FLO': 'Florincoin',
             'HUC': 'Huntercoin',
             'BTCD': 'BitcoinDark'}
-    
+
     today = datetime.datetime.now().date()
     start = today - datetime.timedelta(8)
     end = today - datetime.timedelta(1)
     start = int(time.mktime(datetime.datetime(start.year, start.month, start.day, 0).timetuple()))
     end = int(time.mktime(datetime.datetime(end.year, end.month, end.day, 23).timetuple()))
-    
+
     newone = []
     for coin_cd in coin.keys():
         res = get_json(coin_cd, start, end)
@@ -123,7 +123,7 @@ def get_newone():
 
         newone.append((coin_cd, price))
     newone = pd.DataFrame(newone, columns = ['name', 'ts']).set_index('name')
-    
+
     return(newone)
 
 def get_ticker(symbol, take = 'percentChange'):
@@ -131,7 +131,5 @@ def get_ticker(symbol, take = 'percentChange'):
     res = rq.get(url)
     ticker = res.json()
     information = float(ticker['BTC_' + symbol][take])
-    
+
     return(information)
-
-

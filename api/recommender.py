@@ -6,17 +6,17 @@
 import pandas as pd
 import numpy as np
 
-def find_code(data, target, k):     
+def find_code(data, target, k):
     corr = []
     idx_lst = data.index
     for idx in idx_lst:
         value = np.corrcoef(x = target, y = data.loc[idx, 'ts'])[0, 1]
         corr.append(value)
-    
+
     corr = pd.Series(corr, index = idx_lst).sort_values(ascending = False)
     top = list(corr.index[:k])
     value = np.mean(corr.loc[top])
-    
+
     return(top, value)
 
 def scoring(data, target, k):
@@ -27,7 +27,7 @@ def scoring(data, target, k):
     score += candi['target3'] * 5
     score += candi['target7'] * 1
     score /= (10 + 5 + 3 + 1)
-    
+
     return(score)
 
 
@@ -35,7 +35,7 @@ def scoring(data, target, k):
 
 # In[233]:
 
-def cryto_recommender(history, new, n_recommend = 5):
+def crypto_recommender(history, new, n_recommend = 5):
     result = []
     for i in new.index:
         target = new.loc[i, 'ts']
@@ -43,5 +43,3 @@ def cryto_recommender(history, new, n_recommend = 5):
 
     recommend = sorted(result, key = lambda x: x[1], reverse = True)[:n_recommend]
     return(recommend)
-
-

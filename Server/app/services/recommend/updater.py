@@ -7,6 +7,8 @@ from price_api import get_newone
 from time import sleep
 from apscheduler.scheduler import Scheduler
 
+from app.models.coin import CoinModel, RecommendModel
+
 sched = Scheduler()
 sched.start()
 
@@ -16,7 +18,8 @@ def updateRecommends():
         history = pickle.load(f)
         new = get_newone()
         recommend = crypto_recommender(history, new, n_recommend = 5)
-        print(recommend)
+        for item in recommend:
+            Recommend(symbol=item[0], score=item[1]).save()
 
     scheduleDate = getScheduleDate()
     sched.add_date_job(updateRecommends, scheduleDate, [])
@@ -33,6 +36,3 @@ def updateCoins():
 def start():
     update()
     updateCoins()
-
-if __name__ == "__main__":
-    updateRecommends()

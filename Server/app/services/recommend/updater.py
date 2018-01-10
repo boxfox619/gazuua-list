@@ -32,7 +32,7 @@ def updateCoins():
 
 def start():
     update()
-    updateCoins
+    updateCoins()
 
 if __name__ == "__main__":
     updateRecommends()

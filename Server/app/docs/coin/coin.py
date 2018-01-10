@@ -11,13 +11,13 @@ COIN_GET = {
                         'rank': 1,
                         'token': 'BTC',
                         'name': 'BitCoin',
-                        'rate'": '12%'
+                        'rate': '12%'
                     },
                     {
                         'rank': 2,
                         'token': 'ETH',
                         'name': 'Ethereum',
-                        'rate'": '-12%'
+                        'rate': '-12%'
                     }
                 ]
             }

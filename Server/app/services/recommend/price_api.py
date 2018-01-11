@@ -7,6 +7,74 @@ import requests as rq
 import datetime
 import time
 
+coin = {'XRP': 'Ripple',
+        'STR': 'Stella',
+        'ETH': 'ethereum',
+        'XEM': 'NEM',
+        'DGB': 'DigiBite',
+        'SC': 'Siacoin',
+        'LTC': 'Litecoin',
+        'ETC': 'Ethereum Classic',
+        'BCH': 'Bitcoin Cash',
+        'DOGE': 'Dogecoin',
+        'DASH': 'Dash',
+        'BTS': 'BitShares',
+        'XMR': 'Monero',
+        'NXT': 'NXT',
+        'LSK': 'Lisk',
+        'STEEM': 'STEEM',
+        'BCN': 'Bytecoin',
+        'FCT': 'Factom',
+        'STRAT': 'Stratis',
+        'BURST': 'Burst',
+        'ZEC': 'Zcash',
+        'OMG': 'OmiseGO',
+        'EMC2': 'Einsteinium',
+        'ARDR': 'Ardor',
+        'REP': 'Augur',
+        'ZRX': '0x',
+        'GNT': 'Golem',
+        'CVC': 'Civic',
+        'LBC': 'LBRY Credits',
+        'MAID': 'MaidSafeCoin',
+        'GAME': 'GameCredits',
+        'VTC': 'Vertcoin',
+        'SYS': 'Syscoin',
+        'DCR': 'Decred',
+        'STORJ': 'Storj',
+        'XCP': 'Counterparty',
+        'AMP': 'Synereo AMP',
+        'PASC': 'PascalCoin',
+        'GAS': 'Gas',
+        'GNO': 'Gnosis',
+        'FLDC': 'FoldingCoin',
+        'POT': 'PotCoin',
+        'NXC': 'Nexium',
+        'NAV': 'NAVCoin',
+        'BELA': 'Bela',
+        'VRC': 'VeriCoin',
+        'OMNI': 'Omni',
+        'CLAM': 'CLAMS',
+        'GRC': 'Gridcoin Research',
+        'NEOS': 'Neoscoin',
+        'EXP': 'Expanse',
+        'VIA': 'Viacoin',
+        'BLK': 'BlackCoin',
+        'XVC': 'Vcash',
+        'PINK': 'Pinkcoin',
+        'NMC': 'Namecoin',
+        'RADS': 'Radium',
+        'XPM': 'Primecoin',
+        'SBD': 'Steem Dollars',
+        'XBC': 'BitcoinPlus',
+        'BCY': 'BitCrystals',
+        'RIC': 'Riecoin',
+        'PPC': 'Peercoin',
+        'BTM': 'Bitmark',
+        'FLO': 'Florincoin',
+        'HUC': 'Huntercoin',
+        'BTCD': 'BitcoinDark'}
+
 # In[3]:
 
 def get_json(coin_cd, start, end):
@@ -38,74 +106,6 @@ def get_history(res, coin_cd):
 # In[ ]:
 
 def get_newone():
-    coin = {'XRP': 'Ripple',
-            'STR': 'Stella',
-            'ETH': 'ethereum',
-            'XEM': 'NEM',
-            'DGB': 'DigiBite',
-            'SC': 'Siacoin',
-            'LTC': 'Litecoin',
-            'ETC': 'Ethereum Classic',
-            'BCH': 'Bitcoin Cash',
-            'DOGE': 'Dogecoin',
-            'DASH': 'Dash',
-            'BTS': 'BitShares',
-            'XMR': 'Monero',
-            'NXT': 'NXT',
-            'LSK': 'Lisk',
-            'STEEM': 'STEEM',
-            'BCN': 'Bytecoin',
-            'FCT': 'Factom',
-            'STRAT': 'Stratis',
-            'BURST': 'Burst',
-            'ZEC': 'Zcash',
-            'OMG': 'OmiseGO',
-            'EMC2': 'Einsteinium',
-            'ARDR': 'Ardor',
-            'REP': 'Augur',
-            'ZRX': '0x',
-            'GNT': 'Golem',
-            'CVC': 'Civic',
-            'LBC': 'LBRY Credits',
-            'MAID': 'MaidSafeCoin',
-            'GAME': 'GameCredits',
-            'VTC': 'Vertcoin',
-            'SYS': 'Syscoin',
-            'DCR': 'Decred',
-            'STORJ': 'Storj',
-            'XCP': 'Counterparty',
-            'AMP': 'Synereo AMP',
-            'PASC': 'PascalCoin',
-            'GAS': 'Gas',
-            'GNO': 'Gnosis',
-            'FLDC': 'FoldingCoin',
-            'POT': 'PotCoin',
-            'NXC': 'Nexium',
-            'NAV': 'NAVCoin',
-            'BELA': 'Bela',
-            'VRC': 'VeriCoin',
-            'OMNI': 'Omni',
-            'CLAM': 'CLAMS',
-            'GRC': 'Gridcoin Research',
-            'NEOS': 'Neoscoin',
-            'EXP': 'Expanse',
-            'VIA': 'Viacoin',
-            'BLK': 'BlackCoin',
-            'XVC': 'Vcash',
-            'PINK': 'Pinkcoin',
-            'NMC': 'Namecoin',
-            'RADS': 'Radium',
-            'XPM': 'Primecoin',
-            'SBD': 'Steem Dollars',
-            'XBC': 'BitcoinPlus',
-            'BCY': 'BitCrystals',
-            'RIC': 'Riecoin',
-            'PPC': 'Peercoin',
-            'BTM': 'Bitmark',
-            'FLO': 'Florincoin',
-            'HUC': 'Huntercoin',
-            'BTCD': 'BitcoinDark'}
-
     today = datetime.datetime.now().date()
     start = today - datetime.timedelta(8)
     end = today - datetime.timedelta(1)
@@ -125,6 +125,13 @@ def get_newone():
     newone = pd.DataFrame(newone, columns = ['name', 'ts']).set_index('name')
 
     return(newone)
+
+def get_all_ticker():
+    tickers = []
+    for coin_cd in coin.keys():
+        tickers.append([coin_cd, coin[coin_cd], get_ticker(coin_cd)])
+
+    return (tickers)
 
 def get_ticker(symbol, take = 'percentChange'):
     url = 'https://poloniex.com/public?command=returnTicker'

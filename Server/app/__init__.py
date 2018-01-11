@@ -5,6 +5,7 @@ from app.docs import TEMPLATE
 from app.models import Mongo
 from app.views import ViewInjector
 from app.middleware import ErrorHandler, Logger
+from app.services.recommend import updater
 
 swagger = Swagger(template=TEMPLATE)
 # To Swagger UI
@@ -34,6 +35,7 @@ def create_app(config_name='dev'):
     app_ = Flask(__name__)
     app_.config.from_pyfile(config_path)
 
+    updater.start()
     swagger.init_app(app_)
     db.init_app(app_)
     view.init_app(app_)

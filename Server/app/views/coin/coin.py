@@ -13,9 +13,8 @@ class Coin(Resource):
         """
         코인 정보 조회
         """
-        print(CoinModel.objects())
 
-        # return Response(
-        # json.dumps([mongo_to_dict(coin, ['coins']) for coin in CoinModel.objects()], ensure_ascii=False),
-        # 200,
-        # content_type='application/json; charset=utf8')
+        return Response(
+         CoinModel.query.all(),
+         200,
+         content_type='application/json; charset=utf8')

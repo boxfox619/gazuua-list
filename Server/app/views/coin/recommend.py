@@ -14,9 +14,7 @@ class Recommend(Resource):
         추천 코인 정보 조회
         """
 
-        # recommends = json.dumps([mongo_to_dict(recommend, ['recommend_coins']) for coin in RecommendModel.objects()], ensure_ascii=False)
-        #
-        # return Response(
-        # ,
-        #  200,
-        #  content_type='application/json; charset=utf8')
+        return Response(
+         RecommendModel.query.all(),
+         200,
+         content_type='application/json; charset=utf8')

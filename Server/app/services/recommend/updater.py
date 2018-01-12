@@ -2,6 +2,7 @@ import pickle
 import sys
 import datetime
 import multiprocessing
+import time
 
 from .recommender import crypto_recommender
 from .price_api import get_newone, get_all_ticker
@@ -13,8 +14,7 @@ from app.models.coin import CoinModel, RecommendModel
 sched = Scheduler()
 sched.start()
 
-def updateRecommendTask():
-    multiprocessing.Process(target=updateRecommends).start()
+prevTime = 19990619
 
 def updateRecommends():
     print('update recommend coins')
@@ -26,18 +26,6 @@ def updateRecommends():
         for item in recommend:
             RecommendModel(symbol=item[0], score=item[1]).save()
 
-    scheduleDate = getScheduleDate()
-    sched.add_date_job(updateRecommendTask, scheduleDate, [])
-
-def getScheduleDate():
-    now = datetime.datetime.now()
-    str_list = [now.year, '-', now.month, '-', now.day+1, ' 00:00:00']
-    return ''.join(str(v) for v in str_list)
-
-
-def updateCoinsTask():
-    multiprocessing.Process(target=updateCoins).start()
-
 def updateCoins():
     print('update coin price')
     tickers = get_all_ticker()
@@ -48,8 +36,16 @@ def updateCoins():
         name=ticker[1],
         rate=ticker[2]).save()
 
+def update():
+    while True:
+        updateCoins()
+        date = datetime.datetime.now()
+        now = date.year + date.month + date.day
+        if prevTime != now:
+            updateRecommends()
+        time.sleep(15)
 
-def start():
-    updateCoinsTask()
-    updateRecommendTask()
-    sched.add_interval_job(updateCoinsTask, seconds=15, args=[])
+def updateTask():
+
+def init():
+    multiprocessing.Process(target=update).start()

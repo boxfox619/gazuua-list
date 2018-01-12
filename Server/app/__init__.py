@@ -41,7 +41,7 @@ def create_app(config_name='dev'):
     view.init_app(app_)
     error_handler.init_app(app_)
     logger.init_app(app_)
-    updater.start()
+    updater.init()
 
     return app_
 

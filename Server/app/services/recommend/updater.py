@@ -43,5 +43,6 @@ def updateCoins():
 
 
 def start():
+    updateCoins()
+    updateRecommends()
     sched.add_interval_job(updateCoins, seconds=15, args=[])
-    sched.add_date_job(updateRecommends, getScheduleDate(), [])

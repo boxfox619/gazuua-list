@@ -1,6 +1,6 @@
 from config import *
 
-HOST = 'localhost'
+HOST = '0.0.0.0'
 ENDPOINT = '{0}:{1}'.format(DOMAIN if DOMAIN else HOST, PORT)
 SWAGGER.update({'host': ENDPOINT})
 

@@ -1,7 +1,7 @@
 import pickle
 import sys
 import datetime
-import threading
+import multiprocessing
 
 from .recommender import crypto_recommender
 from .price_api import get_newone, get_all_ticker
@@ -14,9 +14,7 @@ sched = Scheduler()
 sched.start()
 
 def updateRecommendTask():
-    thread = threading.Thread(target=updateRecommends, args=())
-    thread.daemon = True
-    thread.start()
+    multiprocessing.Process(target=updateRecommends).start()
 
 def updateRecommends():
     print('update recommend coins')
@@ -37,11 +35,8 @@ def getScheduleDate():
     return ''.join(str(v) for v in str_list)
 
 
-
 def updateCoinsTask():
-    thread = threading.Thread(target=updateCoins, args=())
-    thread.daemon = True
-    thread.start()
+    multiprocessing.Process(target=updateCoins).start()
 
 def updateCoins():
     print('update coin price')

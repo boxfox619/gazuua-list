@@ -7,7 +7,7 @@ class CoinModel(Document):
     """
     symbol = StringField(primary_key=True)
     name = StringField(required=True)
-    rate = StringField(required=True)
+    rate = FloatField(required=True)
 
 class RecommendModel(Document):
     """

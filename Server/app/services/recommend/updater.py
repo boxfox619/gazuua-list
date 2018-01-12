@@ -40,9 +40,8 @@ def updateCoins():
         symbol=ticker[0],
         name=ticker[1],
         rate=ticker[2]).save()
-    sched.add_interval_job(updateCoins, seconds=15, args=[])
 
 
 def start():
-    updateRecommends()
-    updateCoins()
+    sched.add_interval_job(updateCoins, seconds=15, args=[])
+    sched.add_date_job(updateRecommends, getScheduleDate(), [])

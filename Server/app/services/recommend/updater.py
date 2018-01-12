@@ -45,7 +45,5 @@ def update():
             updateRecommends()
         time.sleep(15)
 
-def updateTask():
-
 def init():
     multiprocessing.Process(target=update).start()

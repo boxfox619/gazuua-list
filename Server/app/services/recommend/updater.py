@@ -1,6 +1,7 @@
 import pickle
 import sys
 import datetime
+import threading
 
 from .recommender import crypto_recommender
 from .price_api import get_newone, get_all_ticker
@@ -12,6 +13,10 @@ from app.models.coin import CoinModel, RecommendModel
 sched = Scheduler()
 sched.start()
 
+def updateRecommendTask():
+    thread = threading.Thread(target=updateRecommends, args=())
+    thread.daemon = True
+    thread.start()
 
 def updateRecommends():
     print('update recommend coins')
@@ -24,12 +29,19 @@ def updateRecommends():
             RecommendModel(symbol=item[0], score=item[1]).save()
 
     scheduleDate = getScheduleDate()
-    sched.add_date_job(updateRecommends, scheduleDate, [])
+    sched.add_date_job(updateRecommendTask, scheduleDate, [])
 
 def getScheduleDate():
     now = datetime.datetime.now()
     str_list = [now.year, '-', now.month, '-', now.day+1, ' 00:00:00']
     return ''.join(str(v) for v in str_list)
+
+
+
+def updateCoinsTask():
+    thread = threading.Thread(target=updateCoins, args=())
+    thread.daemon = True
+    thread.start()
 
 def updateCoins():
     print('update coin price')
@@ -43,6 +55,6 @@ def updateCoins():
 
 
 def start():
-    updateCoins()
-    updateRecommends()
-    sched.add_interval_job(updateCoins, seconds=15, args=[])
+    updateCoinsTask()
+    updateRecommendTask()
+    sched.add_interval_job(updateCoinsTask, seconds=15, args=[])

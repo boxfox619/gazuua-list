@@ -44,6 +44,5 @@ def updateCoins():
 
 
 def start():
-    print(get_all_ticker())
     updateRecommends()
     updateCoins()

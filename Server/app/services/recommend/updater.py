@@ -14,6 +14,7 @@ sched.start()
 
 
 def updateRecommends():
+    print('update recommend coins')
     with open('app/services/recommend/pkl/history.pkl', 'rb') as f:
         RecommendModel.objects().delete()
         history = pickle.load(f)
@@ -31,9 +32,9 @@ def getScheduleDate():
     return ''.join(str(v) for v in str_list)
 
 def updateCoins():
-    CoinModel.objects().delete()
+    print('update coin price')
     tickers = get_all_ticker()
-    print(tickers)
+    CoinModel.objects().delete()
     for ticker in tickers:
         CoinModel(
         symbol=ticker[0],

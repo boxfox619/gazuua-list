@@ -35,12 +35,12 @@ def create_app(config_name='dev'):
     app_ = Flask(__name__)
     app_.config.from_pyfile(config_path)
 
-    updater.start()
     swagger.init_app(app_)
     db.init_app(app_)
     view.init_app(app_)
     error_handler.init_app(app_)
     logger.init_app(app_)
+    updater.start()
 
     return app_
 

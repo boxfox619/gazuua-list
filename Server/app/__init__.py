@@ -37,11 +37,11 @@ def create_app(config_name='dev'):
     app_.config.from_pyfile(config_path)
 
     swagger.init_app(app_)
-    db.init_app(app_)
     view.init_app(app_)
     error_handler.init_app(app_)
     logger.init_app(app_)
-    updater.init()
+    updater.init(app_)
+    db.init_app(app_)
 
     return app_
 

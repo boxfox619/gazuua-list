@@ -15,6 +15,6 @@ class Coin(Resource):
         """
 
         return Response(
-         CoinModel.objects().to_json(),
+         CoinModel.objects().order_by('-rate').to_json(),
          200,
          content_type='application/json; charset=utf8')

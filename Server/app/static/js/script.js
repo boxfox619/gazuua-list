@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
 function loadRecommends(){
   $.ajax({url: "/recommends", success: function(result){
-    $('#recommend-coins>*:not(first-child)').remove();
+    $('#recommend-coins tr').remove();
     for (i = 0; i < result.length; i++) {
       let coin = result[i];
       $('#recommend-coins').append(createElement(coin));
@@ -17,7 +17,7 @@ function loadRecommends(){
 function updateCoins(){
   loadRecommends();
   $.ajax({url: "/coins", success: function(result){
-    $('#all-coins>*:not(first-child)').remove();
+    $('#all-coins tr').remove();
     for (i = 0; i < result.length; i++) {
       let coin = result[i];
       $('#all-coins').append(createElement(coin));
@@ -28,9 +28,9 @@ function updateCoins(){
 
 function createElement(coin){
   return ('<tr>'
-    + '<th></th>'
-    + '<th>'+coin['_id']+'</th>'
-    + '<th>'+coin['name']+'</th>'
-    + '<th>'+coin['rate']+'</th>'
+    + '<td></td>'
+    + '<td>'+coin['_id']+'</td>'
+    + '<td>'+coin['name']+'</td>'
+    + '<td>'+coin['rate']+'</td>'
     + '</tr>')
 }

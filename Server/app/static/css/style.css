@@ -7,12 +7,12 @@ form,fieldset,input,textarea,p,blockquote,th,td {
 
 @font-face {
     font-family: track;
-    src: url(font/Track.ttf);
+    src: url(/static/font/Track.ttf);
 }
 
 @font-face {
     font-family: noto-mono;
-    src: url(font/NotoMono-Regular.ttf);
+    src: url(/static/font/NotoMono-Regular.ttf);
 }
 
 body{

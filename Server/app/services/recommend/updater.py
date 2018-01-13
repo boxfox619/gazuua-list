@@ -1,8 +1,8 @@
 import pickle
 import sys
 import datetime
-import multiprocessing
 import time
+import multiprocessing
 
 from .recommender import crypto_recommender
 from .price_api import get_newone, get_all_ticker
@@ -43,6 +43,7 @@ def update():
         now = date.year + date.month + date.day
         if prevTime != now:
             updateRecommends()
+            prevTime = now
         time.sleep(15)
 
 def init():

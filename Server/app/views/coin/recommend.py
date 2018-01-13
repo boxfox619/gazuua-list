@@ -15,6 +15,6 @@ class Recommend(Resource):
         """
 
         return Response(
-         RecommendModel.query.all(),
+         RecommendModel.objects().to_json(),
          200,
          content_type='application/json; charset=utf8')

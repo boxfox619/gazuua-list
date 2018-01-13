@@ -15,6 +15,6 @@ class Coin(Resource):
         """
 
         return Response(
-         CoinModel.query.all(),
+         CoinModel.objects().to_json(),
          200,
          content_type='application/json; charset=utf8')

@@ -14,7 +14,7 @@ from app.models.coin import CoinModel, RecommendModel
 sched = Scheduler()
 sched.start()
 
-prevTime = 19990619
+prev_time = 19990619
 
 def updateRecommends():
     print('update recommend coins')
@@ -41,9 +41,9 @@ def update():
         updateCoins()
         date = datetime.datetime.now()
         now = date.year + date.month + date.day
-        if prevTime != now:
+        if prev_time != now:
             updateRecommends()
-            prevTime = now
+            prev_time = now
         time.sleep(15)
 
 def init():

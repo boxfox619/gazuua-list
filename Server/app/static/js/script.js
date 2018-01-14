@@ -38,7 +38,7 @@ function createElement(coin){
 function createRecommendElement(coin){
   return ('<li>'
     + '<div class="item">'
-      + '<img class="card" src="https://files.coinmarketcap.com/static/img/coins/32x32/'+coin['name'].toLowerCase()+'.png"/>'
+      + '<img class="card" src="https://files.coinmarketcap.com/static/img/coins/128x128/'+String(coin['name']).toLowerCase()+'.png"/>'
       + '<div>'+coin['name']+'</div>'
       + '<div>'+coin['rate']+'</div>'
     + '</div>'

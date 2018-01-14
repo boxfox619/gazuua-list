@@ -40,7 +40,7 @@ def create_app(config_name='dev'):
     view.init_app(app_)
     error_handler.init_app(app_)
     logger.init_app(app_)
-    updater.init(app_)
+    #updater.init(app_)
     db.init_app(app_)
 
     return app_

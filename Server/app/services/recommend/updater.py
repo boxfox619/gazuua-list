@@ -50,10 +50,10 @@ def update(app_):
         date = datetime.datetime.now()
         now = date.year + date.month + date.day
         if prev_time != now:
-            #updateRecommends()
+            updateRecommends()
             prev_time = now
 
 def init(app_):
     p = multiprocessing.Process(target=update, args=[app_,])
     p.start()
-    #multiprocessing.Process(target=update, args=(app_,)).start()
+    multiprocessing.Process(target=update, args=(app_,)).start()

@@ -5,10 +5,10 @@ $( document ).ready(function() {
 
 function loadRecommends(){
   $.ajax({url: "/recommends", success: function(result){
-    $('#recommend-coins tbody tr').remove();
+    $('#ranking .list>li').remove();
     for (i = 0; i < result.length; i++) {
       let coin = result[i];
-      $('#recommend-coins').append(createElement(coin));
+      $('#ranking .list').append(createRecommendElement(coin));
     }
 
   }});
@@ -33,4 +33,15 @@ function createElement(coin){
     + '<td>'+coin['name']+'</td>'
     + '<td>'+coin['rate']+'</td>'
     + '</tr>')
+}
+
+function createRecommendElement(coin){
+  return ('<li>'
+    + '<div class="item">'
+      + '<img class="card" src="https://files.coinmarketcap.com/static/img/coins/32x32/'+coin['name']+'.png"/>'
+      + '<div>'+coin['name']+'</div>'
+      + '<div>'+coin['rate']+'</div>'
+    + '</div>'
+  + '</li>')
+
 }

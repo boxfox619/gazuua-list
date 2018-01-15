@@ -27,20 +27,24 @@ function updateCoins(){
 }
 
 function createElement(coin){
+  let rate = coin['rate'];
+  rate = rate.toFixed(2);
   return ('<tr>'
     + '<td></td>'
     + '<td>'+coin['_id']+'</td>'
     + '<td>'+coin['name']+'</td>'
-    + '<td>'+coin['rate']+'</td>'
+    + '<td>'+rate+'%</td>'
     + '</tr>')
 }
 
 function createRecommendElement(coin){
+  let rate = coin['rate'];
+  rate = rate.toFixed(2);
   return ('<li>'
     + '<div class="item">'
-      + '<img class="card" src="https://files.coinmarketcap.com/static/img/coins/128x128/'+String(coin['name']).toLowerCase()+'.png"/>'
+      + '<img class="card" onError="this.onerror=null;this.src=\'/static/img/icon-original.png\';" src="https://files.coinmarketcap.com/static/img/coins/128x128/'+String(coin['name']).toLowerCase().replace(/ /gi, "-")+'.png"/>'
       + '<div>'+coin['name']+'</div>'
-      + '<div>'+coin['rate']+'</div>'
+      + '<div>'+rate+'%</div>'
     + '</div>'
   + '</li>')
 

@@ -27,7 +27,7 @@ function updateCoins(){
 }
 
 function createElement(coin){
-  let rate = coin['rate'];
+  let rate = coin['rate']*100;
   rate = rate.toFixed(2);
   return ('<tr>'
     + '<td></td>'
@@ -38,7 +38,7 @@ function createElement(coin){
 }
 
 function createRecommendElement(coin){
-  let rate = coin['rate'];
+  let rate = coin['rate']*100;
   rate = rate.toFixed(2);
   return ('<li>'
     + '<div class="item">'

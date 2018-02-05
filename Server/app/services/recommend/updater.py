@@ -25,8 +25,8 @@ def updateRecommends():
     with open('app/services/recommend/pkl/history.pkl', 'rb') as f:
         RecommendModel.objects().delete()
         history = pickle.load(f)
-        new = get_newone()
-        recommend = crypto_recommender(history, new, n_recommend = 5)
+        names, values = get_newone()
+        recommend = crypto_recommender(history, names, values, n_recommend = 5)
         for item in recommend:
             RecommendModel(symbol=item[0], score=item[1]).save()
 

@@ -18,7 +18,7 @@ def scoring(history, newone, k = 600):
 
     return pred
 
-def cryto_recommender(history, names, values, n_recommend = 5):
+def crypto_recommender(history, names, values, n_recommend = 5):
     score = scoring(history, values, k = 600)
     coin_lst = sorted([(n, v) for (n, v) in zip(names, score)], key = lambda x: x[1], reverse = True)
     recommend = coin_lst[:n_recommend]

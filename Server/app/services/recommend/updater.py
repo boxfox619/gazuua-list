@@ -8,16 +8,11 @@ from app.models import Mongo
 from .recommender import crypto_recommender
 from .price_api import get_newone, get_all_ticker
 from time import sleep
-from apscheduler.scheduler import Scheduler
 
 from app.models.coin import CoinModel, RecommendModel
 
 
 db = Mongo()
-# To Control MongoDB
-
-sched = Scheduler()
-sched.start()
 
 
 def updateRecommends():

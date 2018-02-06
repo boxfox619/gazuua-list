@@ -8,6 +8,7 @@ The list are selected from bigdata and machine-learning algorithm. This is not a
 Please, take a good choice. We reccommend keeping the crytocurrency at least 3 days.
 
 ## Developer
+[김윤태](https://github.com/YunTaeKim)
 [김성래](https://github.com/boxfox619)
 
 ##

@@ -51,4 +51,3 @@ def update(app_):
 def init(app_):
     p = multiprocessing.Process(target=update, args=[app_,])
     p.start()
-    multiprocessing.Process(target=update, args=(app_,)).start()

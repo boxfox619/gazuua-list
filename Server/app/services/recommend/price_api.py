@@ -7,44 +7,7 @@ import requests as rq
 import datetime
 import time
 
-# In[3]:
-
-def get_json(coin_cd, start, end):
-    url = 'https://poloniex.com/public'
-
-    res = rq.get(url, params = {'command': 'returnChartData',
-                                'currencyPair': 'BTC_%s' % coin_cd,
-                                'start': start,
-                                'end': end,
-                                'period': 1800})
-    
-    return(res)
-
-def get_history(res, coin_cd):
-    history = []
-    for tick in res.json():
-        date = datetime.datetime.fromtimestamp(tick['date']).strftime('%Y-%m-%d')
-        hour = datetime.datetime.fromtimestamp(tick['date']).hour
-        minute = datetime.datetime.fromtimestamp(tick['date']).minute
-        price = tick['close']
-
-        value = (date, hour, minute, price)
-        history.append(value)
-
-    dfm = pd.DataFrame(history, columns = ['date', 'hour', 'minute', 'price'])
-    dfm.to_csv('./data/%s.csv' % (coin_cd), index = False)
-
-
-# In[ ]:
-
-def get_newone():
-    import pandas as pd
-    import numpy as np
-    import requests as rq
-    import datetime
-    import time
-
-    coin = {'XRP': 'Ripple',
+coin = {'XRP': 'Ripple',
             'STR': 'Stella',
             'ETH': 'ethereum',
             'XEM': 'NEM',
@@ -111,6 +74,43 @@ def get_newone():
             'FLO': 'Florincoin',
             'HUC': 'Huntercoin',
             'BTCD': 'BitcoinDark'}
+
+# In[3]:
+
+def get_json(coin_cd, start, end):
+    url = 'https://poloniex.com/public'
+
+    res = rq.get(url, params = {'command': 'returnChartData',
+                                'currencyPair': 'BTC_%s' % coin_cd,
+                                'start': start,
+                                'end': end,
+                                'period': 1800})
+    
+    return(res)
+
+def get_history(res, coin_cd):
+    history = []
+    for tick in res.json():
+        date = datetime.datetime.fromtimestamp(tick['date']).strftime('%Y-%m-%d')
+        hour = datetime.datetime.fromtimestamp(tick['date']).hour
+        minute = datetime.datetime.fromtimestamp(tick['date']).minute
+        price = tick['close']
+
+        value = (date, hour, minute, price)
+        history.append(value)
+
+    dfm = pd.DataFrame(history, columns = ['date', 'hour', 'minute', 'price'])
+    dfm.to_csv('./data/%s.csv' % (coin_cd), index = False)
+
+
+# In[ ]:
+
+def get_newone():
+    import pandas as pd
+    import numpy as np
+    import requests as rq
+    import datetime
+    import time
     
     today = datetime.datetime.now()
     start = today - datetime.timedelta(8)

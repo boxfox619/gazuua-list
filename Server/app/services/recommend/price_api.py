@@ -135,19 +135,16 @@ def get_newone():
     
     return(names, values)
 
-def get_ticker(symbol, take = 'percentChange'):
+def get_all_ticker(take = 'percentChange'):
     url = 'https://poloniex.com/public?command=returnTicker'
     res = rq.get(url)
     ticker = res.json()
-    information = float(ticker['BTC_' + symbol][take])
     
-    return(information)
-
-def get_all_ticker():
-    tickers = []
-    for coin_cd in coin.keys():
-        tickers.append([coin_cd, coin[coin_cd], get_ticker(coin_cd)])
-
-    return (tickers)
+    all_ticker = list()
+    for symbol in coin.keys():
+        information = float(ticker['BTC_' + symbol][take])
+        all_ticker.append([symbol, coin[symbol], information])
+    
+    return(all_ticker)
 
 
